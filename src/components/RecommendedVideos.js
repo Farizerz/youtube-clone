@@ -1,10 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-const RecommendedVideos = () => {
+import { Grid, Paper, Typography } from '@material-ui/core';
+
+const RecommendedVideos = ({video}) => {
     return (
-        <div>
-            <h1>Recommended Videos</h1>
-        </div>
+            <Grid item xs={12}>
+                <Paper style={{display: 'flex', alignItems: 'center'}}>
+                    <img style={{marginRight: '20px'}} alt="thumbnail" src={video.snippet.thumbnail.medium.url}></img>
+                    <Typography variant="subtitle1">
+                        <b>
+                            {video.snippet.title}
+                        </b>
+                    </Typography>
+                </Paper>
+            </Grid>
     )
 }
 

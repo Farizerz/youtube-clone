@@ -19,7 +19,15 @@ const Video = ({videoData}) => {
                 <iframe frameBorder="0" height="100%" width="100%" tile="Video Player" src={videoSrc} />
             </Paper>
             <Paper elevation={6} style={{padding: '15px'}}>
-
+                <Typography variant="h4">
+                    {videoData.snippet.title} - {videoData.snippet.channelTitle}
+                </Typography>
+                <Typography variant="subtitle1">
+                    {videoData.snippet.channelTitle}
+                </Typography>
+                <Typography variant="subtitle2">
+                    {videoData.snippet.description}
+                </Typography>                
             </Paper>
         </React.Fragment>
     )
