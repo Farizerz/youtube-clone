@@ -2,9 +2,7 @@ import React from 'react';
 
 import { Grid } from '@material-ui/core';
 
-import {SearchBar, Video } from './components/';
-
-import videoList from './components/videoList.js'
+import {SearchBar, Video, VideoList } from './components/';
 
 import youtube from './api/youtube.js';
 
@@ -13,6 +11,15 @@ class App extends React.Component {
         video: [],
         selectedVideo: null
     }
+
+    componentDidMount() {
+        this.handleSubmit('Za warudo');
+    }
+
+    onVideoSelect = (video) => {
+        this.setState({selectedVideo: video})
+    }
+
     handleSubmit = async (searchTerm) => {
         const response = await youtube.get('search', {     
             params: {
@@ -25,6 +32,7 @@ class App extends React.Component {
         });
         
         this.setState({ video: response.data.items, selectedVideo: response.data.items[0] });
+        console.log(response);
     }
 
     render() {
@@ -45,7 +53,7 @@ class App extends React.Component {
                             </Grid>
 
                             <Grid item xs={4}>
-                                <videoList />
+                                <VideoList videos = {video} onVideoSelect = {this.onVideoSelect} />
                             </Grid>
 
                         </Grid>
